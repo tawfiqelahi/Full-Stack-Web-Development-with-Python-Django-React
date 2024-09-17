@@ -1,0 +1,15 @@
+<h1>All Contacts</h1>
+<a href="{% url 'add_contact' %}">Add Contact</a>
+<form method="GET" action="{% url 'search_contacts' %}">
+    <input type="text" name="q" placeholder="Search by name or email">
+    <button type="submit">Search</button>
+</form>
+<ul>
+    {% for contact in contacts %}
+    <li>
+        <a href="{% url 'contact_detail' contact.pk %}">{{ contact.first_name }}</a> - {{ contact.email }} - {{ contact.phone_number }}
+        <a href="{% url 'edit_contact' contact.pk %}">Edit</a>
+        <a href="{% url 'delete_contact' contact.pk %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>

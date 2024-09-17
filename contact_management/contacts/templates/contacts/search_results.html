@@ -1,0 +1,11 @@
+<h1>Search Results</h1>
+<ul>
+    {% for contact in contacts %}
+    <li>
+        <a href="{% url 'contact_detail' contact.pk %}">{{ contact.first_name }}</a> - {{ contact.email }} - {{ contact.phone_number }}
+    </li>
+    {% empty %}
+    <li>No contacts found.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'home' %}">Back to Home</a>
